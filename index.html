@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.10">
+<title>Hello world</title>
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+
+@import url(//fonts.googleapis.com/css?family=Montserrat|Open+Sans);
+@import url(https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css); /* Default asciidoc style framework - important */
+
+/* CUSTOMISATIONS */
+/* Change the values in root for quick customisation. If you want even more fine grain... venture further. */
+:root{
+--maincolor:#FFFFFF;
+--primarycolor:#294172; /* Fedora Dark Blue */
+--secondarycolor:#3c6eb4; /* Fedora Blue */
+--tertiarycolor:#CCCCCC;
+--highlightcolor:#e59728; /* Features Orange */
+--sidebarbackground:#CACACA;
+--linkcolor:#0D47A1;
+--linkcoloralternate:#db3279; /* Friends Magneta */
+--white:#FFFFFF;
+--black:#000000;
+}
+
+/* Text styles */
+
+body{font-family: "Open Sans",sans-serif;background-color: var(--maincolor);color:var(--black);}
+
+h1{color:var(--primarycolor) !important;font-family:"Montserrat",sans-serif;}
+h2,h3,h4,h5,h6{color:var(--secondarycolor) !important;font-family:"Montserrat",sans-serif;}
+.title{color:var(--black) !important;font-family:"Open Sans",sans-serif;font-style: normal; font-weight: normal;}
+a{text-decoration: none;}
+p{font-family: "Open Sans",sans-serif ! important}
+#toc.toc2 a:link{color:var(--linkcolor);}
+blockquote{color:var(--linkcoloralternate) !important}
+.quoteblock blockquote:before{color:var(--linkcoloralternate)}
+code{color:var(--white);background-color: var(--highlightcolor) !important}
+mark{background-color: var(--highlightcolor)} /* Text highlighting color */
+
+/* Table styles */
+th{background-color: var(--maincolor);color:var(--black) !important;}
+td{background-color: var(--maincolor);color: var(--black) !important}
+
+
+#toc.toc2{background-color:var(--sidebarbackground);}
+#toctitle{color:var(--white);}
+
+/* Responsiveness fixes */
+video {
+  max-width: 100%;
+}
+
+@media all and (max-width: 600px) {
+table {
+  width: 55vw!important;
+  font-size: 3vw;
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>Hello world</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_example_1">example 1</a>
+<ul class="sectlevel2">
+<li><a href="#_sub_example">sub example</a></li>
+</ul>
+</li>
+<li><a href="#_example_1_2">example 1</a></li>
+<li><a href="#_example_1_3">example 1</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is my first test to add a bit of javascript</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_1">example 1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry&#8217;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+</div>
+<div class="sect2">
+<h3 id="_sub_example">sub example</h3>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+This is an example
+</td>
+</tr>
+</table>
+</div>
+<canvas width="1024" height="576" style="border:1px solid #000000;"></canvas>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_1_2">example 1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>TIPS: hello world</p>
+</div>
+<canvas width="1024" height="576" style="border:1px solid #000000;"></canvas>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_1_3">example 1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#8217;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+An admonition draws attention to auxiliary information.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here are the other built-in admonition types:</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Pro tip&#8230;&#8203;
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Don&#8217;t forget&#8230;&#8203;
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Watch out for&#8230;&#8203;
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Ensure that&#8230;&#8203;
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2021-05-15 14:15:52 UTC
+</div>
+</div>
+<script src="minigdx-docs.js"></script>
+</body>
+</html>
