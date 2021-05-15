@@ -4,20 +4,47 @@
 :toclevels: 5
 :icons: font
 
-# Hello world
+= MiniGDX Guide Book
 
-This is my first test to add a bit of javascript
+....
+███╗   ███╗██╗███╗   ██╗██╗ ██████╗ ██████╗ ██╗  ██╗
+████╗ ████║██║████╗  ██║██║██╔════╝ ██╔══██╗╚██╗██╔╝
+██╔████╔██║██║██╔██╗ ██║██║██║  ███╗██║  ██║ ╚███╔╝
+██║╚██╔╝██║██║██║╚██╗██║██║██║   ██║██║  ██║ ██╔██╗
+██║ ╚═╝ ██║██║██║ ╚████║██║╚██████╔╝██████╔╝██╔╝ ██╗
+╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝
+....
 
-== example 1
+MiniGDX is a minimalist 3D Game engine based on Kotlin/Multiplatform.
+A game can be created in Kotlin and deployed in a browser, on a desktop or on Android.
+
+== Overview
+
+Before creating your first game, check https://github.com/minigdx/minigdx-showcase[the showcase web site] and the https://github.com/minigdx/minigdx[MiniGDX code repository].
+
+NOTE: You found a typo? a sentence is not clear?
+https://github.com/minigdx/minigdx-docs/edit/master/src/docs/asciidoc/{docname}{docfilesuffix}[You can edit this documentation]
+
+== Quick Start
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+== Game Creation wrokflow
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+== How to
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+== Deployment
 
 === sub example
 
 IMPORTANT: This is an example
 
 ++++
-<canvas width="1024" height="576" style="border:1px solid #000000;"></canvas>
+<canvas width="1024" height="576" style="border:1px solid #000000;" property="cube"></canvas>
 ++++
 
 ## example 1
@@ -25,7 +52,7 @@ IMPORTANT: This is an example
 TIPS: hello world
 
 ++++
-<canvas width="1024" height="576" style="border:1px solid #000000;"></canvas>
+<canvas width="1024" height="576" style="border:1px solid #000000;" property="anotherCube"></canvas>
 ++++
 
 ## example 1

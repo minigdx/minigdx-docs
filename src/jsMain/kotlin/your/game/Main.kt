@@ -2,27 +2,32 @@ package your.game
 
 import com.github.dwursteisen.minigdx.GameApplicationBuilder
 import com.github.dwursteisen.minigdx.GameConfiguration
+import com.github.dwursteisen.minigdx.GameContext
 import com.github.dwursteisen.minigdx.GameScreenConfiguration
+import com.github.dwursteisen.minigdx.game.Game
 import org.w3c.dom.HTMLCanvasElement
-import org.w3c.dom.get
 import kotlinx.browser.document
 import kotlinx.browser.window
+import org.w3c.dom.Element
+import org.w3c.dom.get
+
+val gameFactory: Map<String, (gameContext: GameContext) -> Game> = mapOf(
+    "cube" to  { MyGame(it) },
+    "anotherCube" to  { MyGame(it) }
+)
 
 fun main() {
-    println("DLDLDLDL")
-    startCube()
+    val canvas = document.getElementsByTagName("canvas")
+    (0 until canvas.length).map { canvas[it]!! }
+        .forEach {
+            runGame(it, gameFactory[it.getAttribute("property")]!!)
+        }
 }
 
-@ExperimentalJsExport
-@JsName("startCube")
-@JsExport
-fun startCube() {
-    // Look for the first canvas in current page.
-    val canvas = document.getElementsByTagName("canvas")[0] ?: throw IllegalArgumentException(
-        "No <canvas> has been found in the current page. Check that the page including your javascript game" +
-            "has a <canvas> tag to render the game in."
-    )
-
+private fun runGame(
+    canvas: Element,
+    gameFactory: (gameContext: GameContext) -> Game
+) {
     // Get the actual root path and compute the root path to let the game load the resources from
     // the correct URL.
     // This portion may need to be customized regarding the service where the game is deployed (itch.io, ...)
@@ -46,6 +51,6 @@ fun startCube() {
             )
         },
         // Creation of your game
-        gameFactory = { MyGame(it) }
+        gameFactory = gameFactory
     ).start() // ! Don't forget to call this method to start your game!
 }

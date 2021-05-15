@@ -1,7 +1,7 @@
 plugins {
-    id("com.github.minigdx.jvm") version "1.0.0"
-    id("com.github.minigdx.js") version "1.0.0"
-    id("com.github.minigdx.common") version "1.0.0"
+    id("com.github.minigdx.jvm") version "DEV-SNAPSHOT"
+    id("com.github.minigdx.js") version "DEV-SNAPSHOT"
+    id("com.github.minigdx.common") version "DEV-SNAPSHOT"
 
     id("org.asciidoctor.jvm.convert") version "3.1.0"
 }
