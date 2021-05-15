@@ -1,0 +1,45 @@
+:docinfo: shared
+:stylesheet: fedora.css
+:toc: left
+:toclevels: 5
+:icons: font
+
+# Hello world
+
+This is my first test to add a bit of javascript
+
+== example 1
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+=== sub example
+
+IMPORTANT: This is an example
+
+++++
+<canvas width="1024" height="576" style="border:1px solid #000000;"></canvas>
+++++
+
+## example 1
+
+TIPS: hello world
+
+++++
+<canvas width="1024" height="576" style="border:1px solid #000000;"></canvas>
+++++
+
+## example 1
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+NOTE: An admonition draws attention to auxiliary information.
+
+Here are the other built-in admonition types:
+
+TIP: Pro tip...
+
+IMPORTANT: Don't forget...
+
+WARNING: Watch out for...
+
+CAUTION: Ensure that...
