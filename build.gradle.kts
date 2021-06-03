@@ -1,13 +1,18 @@
 plugins {
-    id("com.github.minigdx.jvm") version "DEV-SNAPSHOT"
-    id("com.github.minigdx.js") version "DEV-SNAPSHOT"
-    id("com.github.minigdx.common") version "DEV-SNAPSHOT"
+    id("com.github.minigdx.jvm") version "LATEST-SNAPSHOT"
+    id("com.github.minigdx.js") version "LATEST-SNAPSHOT"
+    id("com.github.minigdx.common") version "LATEST-SNAPSHOT"
 
     id("org.asciidoctor.jvm.convert") version "3.1.0"
 }
 
 minigdx {
-    jvm.mainClass.set("your.game.Main")
+    jvm.mainClass.set("com.github.minigdx.docs.quick.start.Main")
+}
+
+dependencies {
+    this.commonMainImplementation("com.github.minigdx:minigdx-imgui-light:LATEST-SNAPSHOT")
+    this.minigdxToUnpack("com.github.minigdx:minigdx-imgui-light:LATEST-SNAPSHOT")
 }
 
 val copyJs = project.tasks.register("unzipBundleJs", Copy::class) {

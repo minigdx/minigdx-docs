@@ -23,5 +23,3 @@ pluginManagement {
         jcenter()
     }
 }
-
-// includeBuild("../minigdx-gradle-plugin")

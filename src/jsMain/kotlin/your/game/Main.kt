@@ -5,15 +5,17 @@ import com.github.dwursteisen.minigdx.GameConfiguration
 import com.github.dwursteisen.minigdx.GameContext
 import com.github.dwursteisen.minigdx.GameScreenConfiguration
 import com.github.dwursteisen.minigdx.game.Game
-import org.w3c.dom.HTMLCanvasElement
+import com.github.minigdx.docs.quick.start.CubeGame
 import kotlinx.browser.document
 import kotlinx.browser.window
 import org.w3c.dom.Element
+import org.w3c.dom.HTMLCanvasElement
 import org.w3c.dom.get
 
 val gameFactory: Map<String, (gameContext: GameContext) -> Game> = mapOf(
-    "cube" to  { MyGame(it) },
-    "anotherCube" to  { MyGame(it) }
+    "quickstart" to { CubeGame(it) },
+    "cube" to { MyGame(it) },
+    "anotherCube" to { MyGame(it) }
 )
 
 fun main() {

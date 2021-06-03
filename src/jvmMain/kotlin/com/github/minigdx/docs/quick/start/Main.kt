@@ -1,4 +1,4 @@
-package your.game
+package com.github.minigdx.docs.quick.start
 
 import com.github.dwursteisen.minigdx.GameApplicationBuilder
 import com.github.dwursteisen.minigdx.GameConfiguration
@@ -18,7 +18,7 @@ object Main {
                     // Screen configuration used for your game (ie: how should render your game)
                     gameScreenConfiguration = GameScreenConfiguration.WithRatio(16f / 9f),
                     // Is your game should use show debug information? (hitbox, ...)
-                    debug = true,
+                    debug = false,
                     // (JVM Specific configuration)
                     // Configuration of the window use to render your game
                     window = Window(
@@ -33,7 +33,7 @@ object Main {
                 )
             },
             // Creation of your game
-            gameFactory = { MyGame(it) }
+            gameFactory = { CubeGame(it) }
         ).start() // Don't forget to call the start method to run your game!
     }
 }

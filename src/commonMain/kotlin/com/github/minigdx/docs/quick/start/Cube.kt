@@ -1,4 +1,4 @@
-package your.game.components
+package com.github.minigdx.docs.quick.start
 
 import com.github.dwursteisen.minigdx.Seconds
 import com.github.dwursteisen.minigdx.ecs.components.Component

@@ -1,4 +1,4 @@
-package your.game.systems
+package com.github.minigdx.docs.quick.start
 
 import com.github.dwursteisen.minigdx.Seconds
 import com.github.dwursteisen.minigdx.ecs.entities.Entity
@@ -6,10 +6,10 @@ import com.github.dwursteisen.minigdx.ecs.entities.position
 import com.github.dwursteisen.minigdx.ecs.systems.EntityQuery
 import com.github.dwursteisen.minigdx.ecs.systems.System
 import com.github.dwursteisen.minigdx.input.Key
-import your.game.components.Cube
+import com.github.minigdx.docs.quick.start.Cube
 import kotlin.math.abs
 import kotlin.math.cos
-
+// tag::cubegame[]
 /**
  * Rotate entities with [Cube] component by 90 degrees per second.
  */
@@ -19,12 +19,12 @@ class RotatingCubeSystem : System(EntityQuery.of(Cube::class)) {
         val component = entity.get(Cube::class)
         // If the key SPACE is pressed one time,
         // then set the duration of the component to 2 seconds.
-        if(input.isKeyJustPressed(Key.SPACE)) {
+        if(input.isKeyJustPressed(Key.SPACE)) { // <1>
             component.duration = 2f
         }
 
         // If there is a duration, the cube can be scaled
-        if(component.duration > 0f) {
+        if(component.duration > 0f) { // <2>
             component.duration -= delta
             // Compute the scale regarding the remaining duration using a cosine function
             // and keep the absolute value so the scale is always positive.
@@ -39,6 +39,7 @@ class RotatingCubeSystem : System(EntityQuery.of(Cube::class)) {
         }
 
         // Rotate the cube of 90 degrees per second.
-        entity.position.addLocalRotation(y = 90f, delta = delta)
+        entity.position.addLocalRotation(y = 90f, delta = delta) // <3>
     }
 }
+// end::cubegame[]

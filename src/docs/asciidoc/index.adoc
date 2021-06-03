@@ -3,6 +3,7 @@
 :toc: left
 :toclevels: 5
 :icons: font
+:sourcedir: ../../commonMain/kotlin
 
 = MiniGDX Guide Book
 
@@ -27,46 +28,109 @@ https://github.com/minigdx/minigdx-docs/edit/master/src/docs/asciidoc/{docname}{
 
 == Quick Start
 
+- Open https://github.com/minigdx/minigdx-game-template[MiniGDX Template Repository]
+- Hit the button "Use This Template"
+- Clone your new project locally
+- Run the command `./gradlew runJvm` (to run on desktop) or `./gradlew runJs` (to run in your browser)
+- This example bellow should be displayed
+
+++++
+<canvas width="512" height="288" style="border:1px solid #000000;" property="quickstart"></canvas>
+++++
+
+Let's take a look to the game code:
+
+[source,kotlin]
+----
+include::{sourcedir}/com/github/minigdx/docs/quick/start/CubeGame.kt[tag=cubegame]
+----
+<1> Load the scene of the game;
+<2> Create an entity from a object of the scene;
+<3> Create a system.
+
+TIP: The source code of this quick start can be https://github.com/minigdx/minigdx-game-template/tree/main/src/commonMain/kotlin/your/game[browsed online]
+
+MiniGDX is an https://gameprogrammingpatterns.com/component.html[entity component] based game engine.
+Those entities are created, in this example, from objects of the scene.
+The scene is loaded from a `protobuf` file. This file is created using a gradle plugin using a `gltf` as source.
+More information about this process are available in the <<_scene_creation>> paragraph.
+
+Just keep in mind: this example load models from a file containing all 3D models.
+Then it create all entities from this file: the camera, the light and the cube. The component `Cube` is added only
+to this 3D model. See this component as a "tag" so the `RotatingCubeSystem` do know which entities to manipulate.
+
+Once all entities of the game are creating, the `RotatingCubeSystem` will manage the behaviours of all
+entities with the component `Cube`.
+
+[source,kotlin]
+----
+include::{sourcedir}/com/github/minigdx/docs/quick/start/RotatingCubeSystem.kt[tag=cubegame]
+----
+<1> React to the user input. If the space bar has been pressed, then start a timer;
+<2> If the timer is started, then alter the scale of the current entity (here, the cube);
+<3> Rotate the cube in all cases.
+
+TIP: Tweak the cube animation by changing the speed of the rotation then restart the game using `./gradlew runJvm`
+
+== Game Creation Workflow
+
+=== 3D model creation
+
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-== Game Creation wrokflow
+
+=== Use the 3D model
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+=== Create game systems
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+== Scene Creation
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+== MiniGDX API
+
+=== Systems
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+==== Entity graph
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+==== Default systems and components
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+=== Position
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+=== Camera
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+=== Rigged Model Animations
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 == How to
 
+=== Create a 2D game
+
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
 == Deployment
 
-=== sub example
+TIP: Share to the world your creation on twitter with the https://twitter.com/search?q=minigdx[hashtag #minigdx]!
 
-IMPORTANT: This is an example
+=== Deploy a Desktop Game
 
-++++
-<canvas width="1024" height="576" style="border:1px solid #000000;" property="cube"></canvas>
-++++
+`./gradle bundle-jar`
 
-## example 1
+=== Deploy a Web Game
 
-TIPS: hello world
-
-++++
-<canvas width="1024" height="576" style="border:1px solid #000000;" property="anotherCube"></canvas>
-++++
-
-## example 1
-
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
-NOTE: An admonition draws attention to auxiliary information.
-
-Here are the other built-in admonition types:
-
-TIP: Pro tip...
-
-IMPORTANT: Don't forget...
-
-WARNING: Watch out for...
-
-CAUTION: Ensure that...
+`./gradle bundle-js`
