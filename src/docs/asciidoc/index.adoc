@@ -35,10 +35,12 @@ https://github.com/minigdx/minigdx-docs/edit/master/src/docs/asciidoc/{docname}{
 - This example bellow should be displayed
 
 ++++
-<canvas width="512" height="288" style="border:1px solid #000000;" property="quickstart"></canvas>
+<div class="canvas-container">
+    <canvas width="512" height="288" property="quickstart"></canvas>
+</div>
 ++++
 
-Let's take a look to the game code:
+Let's take a look to the game's code:
 
 [source,kotlin]
 ----
@@ -52,21 +54,23 @@ TIP: The source code of this quick start can be https://github.com/minigdx/minig
 
 MiniGDX is an https://gameprogrammingpatterns.com/component.html[entity component] based game engine.
 Those entities are created, in this example, from objects of the scene.
-The scene is loaded from a `protobuf` file. This file is created using a gradle plugin using a `gltf` as source.
+The scene is loaded from a `protobuf` file.
+This file is created using a gradle plugin using a `gltf` as source.
 More information about this process are available in the <<_scene_creation>> paragraph.
 
 Just keep in mind: this example load models from a file containing all 3D models.
-Then it create all entities from this file: the camera, the light and the cube. The component `Cube` is added only
-to this 3D model. See this component as a "tag" so the `RotatingCubeSystem` do know which entities to manipulate.
+Then it create all entities from this file: the camera, the light and the cube.
+The component `Cube` is added only to this 3D model.
+See this component as a "tag" so the `RotatingCubeSystem` do know which entities to manipulate.
 
-Once all entities of the game are creating, the `RotatingCubeSystem` will manage the behaviours of all
-entities with the component `Cube`.
+Once all entities of the game are creating, the `RotatingCubeSystem` will manage the behaviours of all entities with the component `Cube`.
 
 [source,kotlin]
 ----
 include::{sourcedir}/com/github/minigdx/docs/quick/start/RotatingCubeSystem.kt[tag=cubegame]
 ----
-<1> React to the user input. If the space bar has been pressed, then start a timer;
+<1> React to the user input.
+If the space bar has been pressed, then start a timer;
 <2> If the timer is started, then alter the scale of the current entity (here, the cube);
 <3> Rotate the cube in all cases.
 
@@ -77,7 +81,6 @@ TIP: Tweak the cube animation by changing the speed of the rotation then restart
 === 3D model creation
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-
 
 === Use the 3D model
 
