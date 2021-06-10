@@ -5,6 +5,7 @@ import com.github.dwursteisen.minigdx.GameConfiguration
 import com.github.dwursteisen.minigdx.GameContext
 import com.github.dwursteisen.minigdx.GameScreenConfiguration
 import com.github.dwursteisen.minigdx.game.Game
+import com.github.minigdx.docs.camera.CameraTypeGame
 import com.github.minigdx.docs.quick.start.CubeGame
 import kotlinx.browser.document
 import kotlinx.browser.window
@@ -14,6 +15,7 @@ import org.w3c.dom.get
 
 val gameFactory: Map<String, (gameContext: GameContext) -> Game> = mapOf(
     "quickstart" to { CubeGame(it) },
+    "camera" to { CameraTypeGame(it) },
     "cube" to { MyGame(it) },
     "anotherCube" to { MyGame(it) }
 )

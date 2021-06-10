@@ -12,6 +12,7 @@ import com.github.dwursteisen.minigdx.ecs.components.Color
 import com.github.dwursteisen.minigdx.ecs.components.LightComponent
 import com.github.dwursteisen.minigdx.ecs.entities.Entity
 import com.github.dwursteisen.minigdx.ecs.entities.EntityFactory
+import com.github.dwursteisen.minigdx.ecs.events.Event
 import com.github.dwursteisen.minigdx.ecs.systems.EntityQuery
 import com.github.dwursteisen.minigdx.ecs.systems.System
 import com.github.dwursteisen.minigdx.file.Texture
@@ -26,12 +27,13 @@ import com.github.dwursteisen.minigdx.shaders.DataSource
 import com.github.dwursteisen.minigdx.shaders.ShaderProgram
 import com.github.dwursteisen.minigdx.shaders.fragment.UVFragmentShader
 import com.github.dwursteisen.minigdx.shaders.vertex.MeshVertexShader
-import com.github.minigdx.imgui.ImGUIRenderer
-import com.github.minigdx.imgui.InputCapture
-import com.github.minigdx.imgui.internal.Resolution
-import com.github.minigdx.imgui.gui
 import com.github.minigdx.docs.quick.start.Cube
 import com.github.minigdx.docs.quick.start.RotatingCubeSystem
+import com.github.minigdx.imgui.ImGUIRenderer
+import com.github.minigdx.imgui.InputCapture
+import com.github.minigdx.imgui.WidgetBuilder
+import com.github.minigdx.imgui.gui
+import com.github.minigdx.imgui.internal.Resolution
 
 class MyGame(override val gameContext: GameContext) : Game {
 
@@ -62,40 +64,63 @@ class MyGame(override val gameContext: GameContext) : Game {
     }
 
     override fun createRenderStage(gl: GL, compiler: GLResourceClient): List<RenderStage<*, *>> {
-        return super.createRenderStage(gl, compiler) + object : RenderStage<MeshVertexShader, UVFragmentShader>(
-            gl,
-            compiler,
-            MeshVertexShader(),
-            UVFragmentShader(),
-            EntityQuery.none(),
-            EntityQuery.none()
-        ) {
+        return super.createRenderStage(gl, compiler) + ImGUIRenderStage(gl, compiler, texture, gameContext)
+    }
+}
 
-            private val guiRenderer = ImGUI(gl, { program }, vertex, fragment, gameContext.gameScreen, texture)
+// -- TODO: move into minigdx -- //
+class RegisterImGuiSystem(val system: ImGuiSystem) : Event
 
-            private val inputCapture: InputCapture = ImgCapture({input})
+abstract class ImGuiSystem : System(EntityQuery.none()) {
 
-            override fun update(delta: Seconds) {
-                gl.useProgram(program)
-                gui(
-                    renderer = guiRenderer,
-                    inputCapture = inputCapture,
-                    gameResolution = Resolution(gameContext.gameScreen.width, gameContext.gameScreen.height)
-                ) {
-                    verticalContainer(width = 0.25f) {
-                        button(label = "Hello World") {
-                            println("click 1")
-                        }
-                        button(label = "Hello World")  {
-                            println("click 2")
-                        }
-                    }
-                }
-            }
+    override fun update(delta: Seconds, entity: Entity) = Unit
 
-            override fun update(delta: Seconds, entity: Entity) = Unit
+    abstract fun gui(builder: WidgetBuilder)
+
+    override fun onGameStarted(engine: Engine) {
+        emit(RegisterImGuiSystem(this))
+    }
+}
+
+class ImGUIRenderStage(
+    gl: GL,
+    compiler: GLResourceClient,
+    private val texture: Texture,
+    private val gameContext: GameContext
+) : RenderStage<MeshVertexShader, UVFragmentShader>(
+    gl,
+    compiler,
+    MeshVertexShader(),
+    UVFragmentShader(),
+    EntityQuery.none(),
+    EntityQuery.none()
+) {
+
+    private val guiRenderer = ImGUI(gl, { program }, vertex, fragment, gameContext.gameScreen, texture)
+
+    private val inputCapture: InputCapture = ImgCapture({ input })
+
+    private var systems: List<ImGuiSystem> = emptyList()
+
+    override fun onEvent(event: Event, entityQuery: EntityQuery?) {
+        if (event is RegisterImGuiSystem) {
+            systems = systems + event.system
         }
     }
+
+    override fun update(delta: Seconds) {
+        gl.useProgram(program)
+        systems.forEach {
+            gui(
+                renderer = guiRenderer,
+                inputCapture = inputCapture,
+                gameResolution = Resolution(gameContext.gameScreen.width, gameContext.gameScreen.height),
+                builder = { it.gui(this) }
+            )
+        }
+    }
+
+    override fun update(delta: Seconds, entity: Entity) = Unit
 }
 
 class ImgCapture(val input: () -> InputHandler) : InputCapture {
@@ -228,3 +253,4 @@ class ImGUI(
         gl.enable(GL.DEPTH_TEST)
     }
 }
+// -- end: TODO: move into minigdx
