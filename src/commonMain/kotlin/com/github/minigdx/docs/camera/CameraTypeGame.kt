@@ -2,7 +2,6 @@ package com.github.minigdx.docs.camera
 
 import com.dwursteisen.minigdx.scene.api.Scene
 import com.dwursteisen.minigdx.scene.api.relation.ObjectType
-import com.github.dwursteisen.minigdx.GL
 import com.github.dwursteisen.minigdx.GameContext
 import com.github.dwursteisen.minigdx.GameScreen
 import com.github.dwursteisen.minigdx.Seconds
@@ -13,16 +12,12 @@ import com.github.dwursteisen.minigdx.ecs.entities.EntityFactory
 import com.github.dwursteisen.minigdx.ecs.events.Event
 import com.github.dwursteisen.minigdx.ecs.systems.EntityQuery
 import com.github.dwursteisen.minigdx.ecs.systems.System
-import com.github.dwursteisen.minigdx.file.Texture
 import com.github.dwursteisen.minigdx.file.get
 import com.github.dwursteisen.minigdx.game.Game
-import com.github.dwursteisen.minigdx.graphics.GLResourceClient
+import com.github.dwursteisen.minigdx.imgui.ImGuiSystem
 import com.github.dwursteisen.minigdx.input.Key
-import com.github.dwursteisen.minigdx.render.RenderStage
 import com.github.minigdx.docs.quick.start.Cube
 import com.github.minigdx.imgui.WidgetBuilder
-import your.game.ImGUIRenderStage
-import your.game.ImGuiSystem
 
 class ChangeCameraType : Event
 
@@ -92,8 +87,6 @@ class CameraTypeGame(override val gameContext: GameContext) : Game {
 
     private val scene by gameContext.fileHandler.get<Scene>("cube.protobuf")
 
-    private val texture by gameContext.fileHandler.get<Texture>("internal/widgets.png")
-
     override fun createEntities(entityFactory: EntityFactory) {
         scene.children.forEach { node ->
             val entity = entityFactory.createFromNode(node, scene)
@@ -106,10 +99,5 @@ class CameraTypeGame(override val gameContext: GameContext) : Game {
 
     override fun createSystems(engine: Engine): List<System> {
         return listOf(CameraTypeSystem(gameContext.gameScreen), CameraGUI())
-    }
-
-    override fun createRenderStage(gl: GL, compiler: GLResourceClient): List<RenderStage<*, *>> {
-        // TODO: The stage renderer should be able do load the default texture by itself?
-        return super.createRenderStage(gl, compiler) + ImGUIRenderStage(gl, compiler, texture, gameContext)
     }
 }

@@ -8,11 +8,7 @@ plugins {
 
 minigdx {
     jvm.mainClass.set("com.github.minigdx.docs.quick.start.Main")
-}
-
-dependencies {
-    this.commonMainImplementation("com.github.minigdx:minigdx-imgui-light:LATEST-SNAPSHOT")
-    this.minigdxToUnpack("com.github.minigdx:minigdx-imgui-light:LATEST-SNAPSHOT")
+    this.version.set("LATEST-SNAPSHOT")
 }
 
 val copyJs = project.tasks.register("unzipBundleJs", Copy::class) {
