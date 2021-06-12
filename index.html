@@ -387,7 +387,36 @@ Tweak the cube animation by changing the speed of the rotation then restart the 
 <div class="sect2">
 <h3 id="_3d_model_creation">3D model creation</h3>
 <div class="paragraph">
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry&#8217;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<p>MiniGDX can load 3D model from GLTF files. But not all 3D model nor all features from GLTF are supported.
+To use your model, the model needs to have a texture attached.</p>
+</div>
+<div class="paragraph">
+<p>Only emissive Texture or  BSDF Texture are supported for the moment.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You don&#8217;t want to use texture but only color? Create or download a texture on <a href="https://lospec.com/palette-listg">lospec</a>. This texture will act like a palette: use a pixel as color for one face for example.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Safari doesn&#8217;t support WebGL 2 for the moment. If your game needs to run under safari, you have to create
+a texture with a pow2 size. This issue should be fixed with Safari 15. <a href="https://github.com/minigdx/minigdx/issues/15">More information on the related issue</a>.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect2">
@@ -442,7 +471,23 @@ Tweak the cube animation by changing the speed of the rotation then restart the 
 <div class="sect2">
 <h3 id="_camera">Camera</h3>
 <div class="paragraph">
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry&#8217;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<p>MiniGDX provide two camera type:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Perspective: Project objects on the scream like a camera would do: An object close to the camera will be tall while the same object far in the background look small.</p>
+</li>
+<li>
+<p>Orthographic: The object will lock the same no mater if it&#8217;s close or not of the camera. Ideal for a 2D game</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can switch between the two in the example bellow.</p>
+</div>
+<div class="canvas-container">
+    <canvas width="512" height="288" property="camera"></canvas>
 </div>
 </div>
 <div class="sect2">
@@ -496,7 +541,7 @@ Share to the world your creation on twitter with the <a href="https://twitter.co
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-03 09:03:24 UTC
+Last updated 2021-06-12 13:26:44 UTC
 </div>
 </div>
 <script src="minigdx-docs.js"></script>
