@@ -13,7 +13,8 @@ import kotlin.math.cos
 /**
  * Rotate entities with [Cube] component by 90 degrees per second.
  */
-class RotatingCubeSystem : System(EntityQuery.of(Cube::class)) {
+class
+RotatingCubeSystem : System(EntityQuery.of(Cube::class)) {
 
     override fun update(delta: Seconds, entity: Entity) {
         val component = entity.get(Cube::class)

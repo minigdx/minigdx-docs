@@ -90,9 +90,19 @@ TIP: You don't want to use texture but only color? Create or download a texture 
 WARNING: Safari doesn't support WebGL 2 for the moment. If your game needs to run under safari, you have to create
 a texture with a pow2 size. This issue should be fixed with Safari 15. https://github.com/minigdx/minigdx/issues/15[More information on the related issue].
 
+To be loaded in MiniGDX, the GLTF file needs to be converted in a protobuf file that can be read by MiniGDX.
+This conversion is performed at the build time by gradle using a plugin. By default, all `gltf` files
+in the `src/commonMain/assetsSource` are converted as protobuf files.
+
 === Use the 3D model
 
-Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+The `FileHandler` is responsible to load resources. When loaded at the creation of the game (1),
+the resource will be fully loaded when the game will be started (2)
+
+[source,kotlin]
+----
+include::{sourcedir}/com/github/minigdx/docs/camera/CameraTypeGame.kt[tag=loading]
+----
 
 === Create game systems
 
