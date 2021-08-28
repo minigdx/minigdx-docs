@@ -244,15 +244,15 @@ You found a typo? a sentence is not clear?
 <div class="content">
 <pre class="highlight"><code class="language-kotlin" data-lang="kotlin">class CubeGame(override val gameContext: GameContext) : Game {
 
-    private val scene by gameContext.fileHandler.get&lt;Scene&gt;("cube.protobuf") <i class="conum" data-value="1"></i><b>(1)</b>
+    private val scene by gameContext.fileHandler.get&lt;GraphScene&gt;("cube.protobuf") <i class="conum" data-value="1"></i><b>(1)</b>
 
     override fun createEntities(entityFactory: EntityFactory) {
         // Create all entities needed at startup
         // The scene is the node graph that can be updated in Blender
-        scene.children.forEach { node -&gt;
+        scene.nodes.forEach { node -&gt;
             // Create an entity using all information from this node (model, position, camera, ...)
             <i class="conum" data-value="2"></i><b>(2)</b>
-            val entity = entityFactory.createFromNode(node, scene)
+            val entity = entityFactory.createFromNode(node)
 
             // The node is the cube from the Blender file
             if (node.type == ObjectType.MODEL) {
@@ -319,7 +319,8 @@ See this component as a "tag" so the <code>RotatingCubeSystem</code> do know whi
 <pre class="highlight"><code class="language-kotlin" data-lang="kotlin">/**
  * Rotate entities with [Cube] component by 90 degrees per second.
  */
-class RotatingCubeSystem : System(EntityQuery.of(Cube::class)) {
+class
+RotatingCubeSystem : System(EntityQuery.of(Cube::class)) {
 
     override fun update(delta: Seconds, entity: Entity) {
         val component = entity.get(Cube::class)
@@ -418,11 +419,39 @@ a texture with a pow2 size. This issue should be fixed with Safari 15. <a href="
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>To be loaded in MiniGDX, the GLTF file needs to be converted in a protobuf file that can be read by MiniGDX.
+This conversion is performed at the build time by gradle using a plugin. By default, all <code>gltf</code> files
+in the <code>src/commonMain/assetsSource</code> are converted as protobuf files.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_use_the_3d_model">Use the 3D model</h3>
 <div class="paragraph">
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry&#8217;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+<p>The <code>FileHandler</code> is responsible to load resources. When loaded at the creation of the game (1),
+the resource will be fully loaded when the game will be started (2)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-kotlin" data-lang="kotlin">class CameraTypeGame(override val gameContext: GameContext) : Game {
+
+    private val scene by gameContext.fileHandler.get&lt;GraphScene&gt;("cube.protobuf") <i class="conum" data-value="1"></i><b>(1)</b>
+
+    override fun createEntities(entityFactory: EntityFactory) { <i class="conum" data-value="2"></i><b>(2)</b>
+        scene.nodes.forEach { node -&gt;
+            val entity = entityFactory.createFromNode(node)
+
+            if (node.type == ObjectType.MODEL) {
+                entity.add(Cube())
+            }
+        }
+    }
+
+    override fun createSystems(engine: Engine): List&lt;System&gt; {
+        return listOf(CameraTypeSystem(gameContext.gameScreen), CameraGUI())
+    }
+}</code></pre>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -541,7 +570,7 @@ Share to the world your creation on twitter with the <a href="https://twitter.co
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2021-06-12 13:26:44 UTC
+Last updated 2021-08-28 19:32:08 UTC
 </div>
 </div>
 <script src="minigdx-docs.js"></script>
